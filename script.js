@@ -6,7 +6,7 @@ async function fetchXMLData() {
       const parser = new DOMParser();
       const xmlDoc = parser.parseFromString(xmlText, "application/xml");
   
-      
+
       const classes = xmlDoc.getElementsByTagName('CLASS');
       console.log(`Found ${classes.length} classes`);
   
@@ -14,11 +14,11 @@ async function fetchXMLData() {
       tableBody.innerHTML = ''; // Clear existing results
   
       Array.from(classes).forEach((course) => {
-        const name = course.getElementsByTagName('name')[0].textContent.toLowerCase();
-        const number = course.getElementsByTagName('number')[0].textContent;
-        const category = course.getElementsByTagName('category')[0].textContent.toLowerCase();
-        const days = course.getElementsByTagName('days')[0].textContent;
-        const campus = course.getElementsByTagName('campus')[0].textContent;
+        const name = course.getElementsByTagName('COURSETITLE')[0].textContent.toLowerCase();
+        const number = course.getElementsByTagName('COURSENUMBER')[0].textContent;
+        const category = course.getElementsByTagName('DEPT')[0].textContent.toLowerCase();
+        const days = course.getElementsByTagName('DAYS')[0].textContent;
+        const campus = course.getElementsByTagName('CAMPUS')[0].textContent;
   
         const row = document.createElement('tr');
         row.innerHTML = `<td>${name}</td><td>${number}</td><td>${category}</td><td>${days}</td><td>${campus}</td>`;
