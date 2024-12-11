@@ -36,21 +36,21 @@ document.getElementById('searchForm').addEventListener('submit', (event) => {
 
     const classes = xmlDoc.getElementsByTagName('CLASS');
     Array.from(classes).forEach((course) => {
-        const name = course.getElementsByTagName('COURSETITLE')[0].textContent.toLowerCase();
+        const name = course.getElementsByTagName('COURSETITLE')[0].textContent;
         const number = course.getElementsByTagName('COURSENUMBER')[0].textContent;
-        const category = course.getElementsByTagName('DEPT')[0].textContent.toLowerCase();
-        const days = course.getElementsByTagName('DAYS')[0].textContent.toLowerCase();
-        const campus = course.getElementsByTagName('CAMPUS')[0].textContent.toLowerCase();
+        const category = course.getElementsByTagName('DEPT')[0].textContent;
+        const days = course.getElementsByTagName('DAYS')[0].textContent;
+        const campus = course.getElementsByTagName('CAMPUS')[0].textContent;
 
         if (
-          (name.includes(searchString) ||
-          number.includes(searchString) ||
-          days.includes(searchString) ||
+          (name.toLowerCase().includes(searchString) ||
+          number.toLowerCase().includes(searchString) ||
+          days.toLowerCase().includes(searchString) ||
           campus.includes(searchString) ||
-          category.includes(searchString)) &&
+          category.toLowerCase().includes(searchString)) &&
          ((!categoryFilter || categoryFilter === "") ||
-         (categoryFilter === "programming" && name.includes("programming")) ||
-         (categoryFilter === "days" && days.includes(searchString)))
+         (categoryFilter === "programming" && name.toLowerCase().includes("programming")) ||
+         (categoryFilter === "days" && days.toLowerCase().includes(searchString)))
         ) {
             const row = document.createElement('tr');
             row.innerHTML = `<td>${name}</td><td>${number}</td><td>${category}</td><td>${days}</td><td>${campus}</td>`;
