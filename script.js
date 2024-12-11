@@ -1,4 +1,5 @@
-// Define fetchXMLData outside of any event listener
+let xmlDoc;
+
 async function fetchXMLData() {
     try {
       const response = await fetch('class_catalog.xml');
@@ -12,6 +13,8 @@ async function fetchXMLData() {
   
       const tableBody = document.querySelector('#resultsTable tbody');
       tableBody.innerHTML = ''; // Clear existing results
+
+      xmlDoc = parser.parseFromString(xmlText, "application/xml");
   
       Array.from(classes).forEach((course) => {
         const name = course.getElementsByTagName('COURSETITLE')[0].textContent.toLowerCase();
@@ -45,11 +48,11 @@ async function fetchXMLData() {
   
     const classes = document.getElementsByTagName('CLASS');
     Array.from(classes).forEach((course) => {
-      const name = course.getElementsByTagName('name')[0].textContent.toLowerCase();
-      const number = course.getElementsByTagName('number')[0].textContent;
-      const category = course.getElementsByTagName('category')[0].textContent.toLowerCase();
-      const days = course.getElementsByTagName('days')[0].textContent;
-      const campus = course.getElementsByTagName('campus')[0].textContent;
+      const name = course.getElementsByTagName('COURSETITLE')[0].textContent.toLowerCase();
+      const number = course.getElementsByTagName('COURSENUMBER')[0].textContent;
+      const category = course.getElementsByTagName('DEPT')[0].textContent.toLowerCase();
+      const days = course.getElementsByTagName('DAYS')[0].textContent;
+      const campus = course.getElementsByTagName('CAMPUS')[0].textContent;
   
       if (
         (!searchString || name.includes(searchString)) &&
