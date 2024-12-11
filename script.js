@@ -40,6 +40,9 @@ document.getElementById('searchForm').addEventListener('submit', (event) => {
 
     const searchString = document.getElementById('searchString').value.toLowerCase();
     const categoryFilter = document.getElementById('categoryFilter').value;
+    const numberFilter = document.getElementById('numberFilter').value.toLowerCase();
+    const daysFilter = document.getElementById('daysFilter').value.toLowerCase();
+    const campusFilter = document.getElementById('campusFilter').value.toLowerCase();
     const tableBody = document.querySelector('#resultsTable tbody');
 
     tableBody.innerHTML = '';
@@ -59,7 +62,9 @@ document.getElementById('searchForm').addEventListener('submit', (event) => {
 
         if (
             (!searchString || name.includes(searchString)) &&
-            (!categoryFilter || category === categoryFilter.toLowerCase())
+            (!categoryFilter || category === categoryFilter.toLowerCase()) && (!numberFilter || number.includes(numberFilter)) &&
+            (!daysFilter || days.includes(daysFilter)) &&
+            (!campusFilter || campus.includes(campusFilter))
         ) {
             const row = document.createElement('tr');
             row.innerHTML = `<td>${name}</td><td>${number}</td><td>${category}</td><td>${days}</td><td>${campus}</td>`;
