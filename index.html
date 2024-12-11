@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Course Search</title>
+</head>
+<body>
+  <h1>Course Catalog</h1>
+  <form id="searchForm">
+    <input type="text" id="searchString" placeholder="Search courses">
+    <select id="categoryFilter">
+      <option value="">All Categories</option>
+      <option value="Programming">Programming</option>
+      <!-- Add more options as needed -->
+    </select>
+    <button type="submit">Search</button>
+  </form>
+  <table id="resultsTable">
+    <thead>
+      <tr>
+        <th>Course Name</th>
+        <th>Course Number</th>
+        <th>Category</th>
+        <th>Days</th>
+        <th>Campus</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  <script src="script.js" defer></script>
+  <script> 
+  	console.log('Script loaded');
+  </script>
+</body>
+</html>
