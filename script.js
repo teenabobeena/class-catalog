@@ -39,10 +39,7 @@ document.getElementById('searchForm').addEventListener('submit', (event) => {
     console.log('Search form found and event listener attached');
 
     const searchString = document.getElementById('searchString').value.toLowerCase();
-    const categoryFilter = document.getElementById('categoryFilter').value;
-    const numberFilter = document.getElementById('numberFilter').value.toLowerCase();
-    const daysFilter = document.getElementById('daysFilter').value.toLowerCase();
-    const campusFilter = document.getElementById('campusFilter').value.toLowerCase();
+    const categoryFilter = document.getElementById('categoryFilter').value.toLowerCase();
     const tableBody = document.querySelector('#resultsTable tbody');
 
     tableBody.innerHTML = '';
@@ -57,14 +54,15 @@ document.getElementById('searchForm').addEventListener('submit', (event) => {
         const name = course.getElementsByTagName('COURSETITLE')[0].textContent.toLowerCase();
         const number = course.getElementsByTagName('COURSENUMBER')[0].textContent;
         const category = course.getElementsByTagName('DEPT')[0].textContent.toLowerCase();
-        const days = course.getElementsByTagName('DAYS')[0].textContent;
-        const campus = course.getElementsByTagName('CAMPUS')[0].textContent;
+        const days = course.getElementsByTagName('DAYS')[0].textContent.toLowerCase();
+        const campus = course.getElementsByTagName('CAMPUS')[0].textContent.toLowerCase();
 
         if (
-            (!searchString || name.includes(searchString)) &&
-            (!categoryFilter || category === categoryFilter.toLowerCase()) && (!numberFilter || number.includes(numberFilter)) &&
-            (!daysFilter || days.includes(daysFilter)) &&
-            (!campusFilter || campus.includes(campusFilter))
+          (name.includes(searchString) ||
+          number.includes(searchString) ||
+          days.includes(searchString) ||
+          campus.includes(searchString)) &&
+         (!categoryFilter || category === categoryFilter)
         ) {
             const row = document.createElement('tr');
             row.innerHTML = `<td>${name}</td><td>${number}</td><td>${category}</td><td>${days}</td><td>${campus}</td>`;
