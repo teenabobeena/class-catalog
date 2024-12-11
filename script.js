@@ -11,7 +11,7 @@ function fetchXMLData() {
             console.log(`Found ${classes.length} classes`);
 
             const tableBody = document.querySelector('#resultsTable tbody');
-            tableBody.innerHTML = ''; // Clear existing results
+            tableBody.innerHTML = '';
 
             Array.from(classes).forEach((course) => {
                 const name = course.getElementsByTagName('COURSETITLE')[0].textContent.toLowerCase();
@@ -63,7 +63,9 @@ document.getElementById('searchForm').addEventListener('submit', (event) => {
           days.includes(searchString) ||
           campus.includes(searchString) ||
           category.includes(searchString)) &&
-         (!categoryFilter || category === categoryFilter)
+         ((!categoryFilter || categoryFilter === "") ||
+         (categoryFilter === "programming" && category.includes("programming")) ||
+         (categoryFilter === "days" && days.includes(searchString)))
         ) {
             const row = document.createElement('tr');
             row.innerHTML = `<td>${name}</td><td>${number}</td><td>${category}</td><td>${days}</td><td>${campus}</td>`;
