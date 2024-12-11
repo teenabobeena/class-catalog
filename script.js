@@ -9,21 +9,6 @@ function fetchXMLData() {
 
             const classes = xmlDoc.getElementsByTagName('CLASS');
             console.log(`Found ${classes.length} classes`);
-
-            const tableBody = document.querySelector('#resultsTable tbody');
-            tableBody.innerHTML = '';
-
-            Array.from(classes).forEach((course) => {
-                const name = course.getElementsByTagName('COURSETITLE')[0].textContent.toLowerCase();
-                const number = course.getElementsByTagName('COURSENUMBER')[0].textContent;
-                const category = course.getElementsByTagName('DEPT')[0].textContent.toLowerCase();
-                const days = course.getElementsByTagName('DAYS')[0].textContent;
-                const campus = course.getElementsByTagName('CAMPUS')[0].textContent;
-
-                const row = document.createElement('tr');
-                row.innerHTML = `<td>${name}</td><td>${number}</td><td>${category}</td><td>${days}</td><td>${campus}</td>`;
-                tableBody.appendChild(row);
-            });
         }
     };
     xhr.open("GET", "class_catalog.xml", true);
