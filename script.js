@@ -64,7 +64,7 @@ document.getElementById('searchForm').addEventListener('submit', (event) => {
           campus.includes(searchString) ||
           category.includes(searchString)) &&
          ((!categoryFilter || categoryFilter === "") ||
-         (categoryFilter === "programming" && category.includes("programming")) ||
+         (categoryFilter === "programming" && name.includes("programming")) ||
          (categoryFilter === "days" && days.includes(searchString)))
         ) {
             const row = document.createElement('tr');
