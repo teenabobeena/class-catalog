@@ -52,7 +52,7 @@ async function fetchXMLData() {
       return;
     }
   
-    const classes = document.getElementsByTagName('CLASS');
+    const classes = xmlDoc.getElementsByTagName('CLASS');
     Array.from(classes).forEach((course) => {
       const name = course.getElementsByTagName('COURSETITLE')[0].textContent.toLowerCase();
       const number = course.getElementsByTagName('COURSENUMBER')[0].textContent;
