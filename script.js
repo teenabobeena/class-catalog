@@ -45,6 +45,12 @@ async function fetchXMLData() {
     const tableBody = document.querySelector('#resultsTable tbody');
   
     tableBody.innerHTML = '';
+
+    //add error catcher
+    if (!xmlDoc) {
+      console.error('XML data not loaded');
+      return;
+    }
   
     const classes = document.getElementsByTagName('CLASS');
     Array.from(classes).forEach((course) => {
