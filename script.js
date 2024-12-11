@@ -23,7 +23,7 @@ document.getElementById('searchForm').addEventListener('submit', (event) => {
     event.preventDefault();
     console.log('Search form found and event listener attached');
 
-    const searchString = document.getElementById('searchString').value.toLowerCase();
+    const searchString = document.getElementById('searchString').value.trim().toLowerCase();
     const categoryFilter = document.getElementById('categoryFilter').value.toLowerCase();
     const tableBody = document.querySelector('#resultsTable tbody');
 
@@ -46,7 +46,7 @@ document.getElementById('searchForm').addEventListener('submit', (event) => {
           (name.toLowerCase().includes(searchString) ||
           number.toLowerCase().includes(searchString) ||
           days.toLowerCase().includes(searchString) ||
-          campus.includes(searchString) ||
+          campus.toLowerCase().includes(searchString) ||
           category.toLowerCase().includes(searchString)) &&
          ((!categoryFilter || categoryFilter === "") ||
          (categoryFilter === "programming" && name.toLowerCase().includes("programming")) ||
